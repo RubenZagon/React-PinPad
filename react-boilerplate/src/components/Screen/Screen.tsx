@@ -5,21 +5,11 @@ interface ScreenProps {
     digit: string;
     isCorrect: boolean | any;
 }
-
 export const Screen: React.FC<ScreenProps>= ({ digit , isCorrect}) => {
-
     return (
         <div className="Screen"  >
-
-            {isCorrect
-                ? 'OK'
-                : digit
-            }
-
+            {isCorrect ? 'OK' : digit}
         </div>
     );
-
-
 };
-
 Screen.displayName = 'Screen';
