@@ -3,22 +3,24 @@ import {FunctionComponent, useEffect, useState} from 'react';
 import './Pad.scss';
 import {Key} from '../Key';
 import {Screen} from '../Screen';
+import {VALID_PIN} from '../../App';
 
 
 export const Pad: FunctionComponent = () => {
 
-    const numeros: string[] = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+    // Another way more easy to create a array string numbers
+    const numbers: string[] = '1234567890'.split('');
 
     // Intentar hacerlo con array en lugar de string
     const [lastKeyPressed, setLastKeyPressed] = useState('');
     const [pressedKeyMemory, setPressedKeyMemory] = useState('');
     const [screenDisplay, setScreenDisplay] = useState('');
     const [isValidPin, setIsValidPin] = useState(false);
-    const validPin = '154777';
+
     useEffect(() => {
         setPressedKeyMemory(pressedKeyMemory + lastKeyPressed);
-        if (pressedKeyMemory.length === validPin.length) {
-            if (pressedKeyMemory === validPin) {
+        if (pressedKeyMemory.length === VALID_PIN.length) {
+            if (pressedKeyMemory === VALID_PIN) {
                 setIsValidPin(true);
             }
         } else {
@@ -34,9 +36,9 @@ export const Pad: FunctionComponent = () => {
 
     return <div className="Pad">
         <Screen digit={screenDisplay} isCorrect={isValidPin}/>
-        {numeros.map(KeyNumber =>
+        {numbers.map(KeyNumber =>
             <Key
-                Value={KeyNumber}
+                value={KeyNumber}
                 key={KeyNumber}
                 onClickValue={() => setLastKeyPressed(KeyNumber)}
             >
@@ -50,6 +52,7 @@ Pad.displayName = 'Pad';
 function obfuscatePin(currentPin: string) {
     const toConvert: any = currentPin.slice(0, -1);
     let converted = '';
+    // tslint:disable-next-line:forin
     for (let character in toConvert) {
         character = '*';
         converted += character;
