@@ -5,8 +5,8 @@ import { Screen} from './';
 describe('Screen', () => {
   it('should display the default message', () => {
     const renderResult: RenderResult = render(
-      <Screen/>,
+      <Screen digit={'0'} isCorrect={true}/>,
     );
-    expect(renderResult.queryByText('Hello from Screen!')).toBeTruthy();
+    expect(renderResult.queryByText('OK')).toBeTruthy();
   });
 });
