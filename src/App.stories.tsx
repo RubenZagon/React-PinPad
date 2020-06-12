@@ -1,15 +1,10 @@
 import * as React from 'react';
 import { withA11y } from '@storybook/addon-a11y';
+import {Pad} from './components/Pad';
 
 export default {
-    title: 'button',
+    title: 'App | App',
     decorators: [withA11y],
 };
 
-export const accessible = () => <button>Accessible button</button>;
-
-export const inaccessible = () => (
-    <button style={{ backgroundColor: 'red', color: 'darkRed' }}>
-        Inaccessible button
-    </button>
-);
+export const home = () => <Pad/>;

@@ -3,14 +3,14 @@ import './Key.scss';
 import {FunctionComponent} from 'react';
 
 type Data = {
-    Value: string;
+    value: string;
     onClickValue?: () => string | void,
 };
 
-export const Key: FunctionComponent<Data> = ({ Value , onClickValue}) => {
+export const Key: FunctionComponent<Data> = ({ value , onClickValue}) => {
     return (
         <button className="Key" onClick={onClickValue} >
-            {Value}
+            {value}
         </button>
     );
 };

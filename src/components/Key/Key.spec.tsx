@@ -3,10 +3,19 @@ import { render, RenderResult } from '@testing-library/react';
 import { Key} from './';
 
 describe('Key', () => {
-  it('should display the default message', () => {
+  it('should render a key with a number', () => {
     const renderResult: RenderResult = render(
-      <Key/>,
+        <Key value={'1'}/>
     );
-    expect(renderResult.queryByText('Hello from Key!')).toBeTruthy();
+    expect(renderResult.queryByText('1')).toBeTruthy();
   });
+
+  it('dont should display any word in the keys, only numbers', () => {
+    const renderResult: RenderResult = render(
+        <Key value={'paco'}/>
+    );
+    expect(renderResult.queryByText('1')).toBeFalsy();
+  });
+
+
 });
