@@ -2,7 +2,7 @@ import * as React from 'react';
 import './Key.scss';
 import {FunctionComponent} from 'react';
 
-type Data = {
+interface Data = {
     value: string;
     onClickValue?: () => string | void,
 };
